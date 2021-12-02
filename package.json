@@ -9,6 +9,11 @@
     "serve": "webpack serve --mode=development",
     "test": "jest"
   },
+  "jest": {
+    "transform": {
+      "^.+\\.js": "babel-jest"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bgoeschlberger/aoc-solutions.git"
@@ -23,8 +28,10 @@
   },
   "homepage": "https://github.com/bgoeschlberger/aoc-solutions#readme",
   "dependencies": {
+    "@babel/preset-env": "^7.16.4",
     "express": "^4.17.1",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.4.3",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.6.0"
