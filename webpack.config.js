@@ -3,7 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: {
         index: './src/index.js',
-        day1: './src/day1/index.js'
+        day01: './src/day01/index.js',
+        day02: './src/day02/index.js',
     },
     plugins: [
         new HtmlWebpackPlugin({
