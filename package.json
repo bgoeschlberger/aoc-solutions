@@ -4,7 +4,7 @@
   "description": "simple app to solve advent-of-code problems",
   "main": "main.js",
   "scripts": {
-    "start": "npm run build && node main.js",
+    "start": "node main.js",
     "build": "webpack build --mode=production",
     "serve": "webpack serve --mode=development",
     "test": "jest --coverage"
