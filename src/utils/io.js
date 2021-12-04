@@ -4,6 +4,10 @@ export class IO {
         return document.body.textContent.trim().split('\n');
     }
 
+    static get blocks(){
+        return document.body.textContent.trim().split('\n\n');
+    }
+
     static getScriptContent(name){
         return new Promise((resolve) => {
             const req = new XMLHttpRequest();
