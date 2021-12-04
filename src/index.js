@@ -1,4 +1,5 @@
-const { Bookmarklet } = require("./utils/bookmarklet");
+import { Bookmarklet } from './utils/bookmarklet';
+import './index.less'
 
 const titleElem = document.getElementById('title');
 titleElem.innerHTML = "Advent of Code Bookmarklets";
