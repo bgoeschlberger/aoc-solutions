@@ -1,4 +1,4 @@
-[![Known Vulnerabilities](https://snyk.io/test/github/bgoeschlberger/aoc-solutions/badge.svg)](https://snyk.io/test/github/bgoeschlberger/aoc-solutions)
+[![Build Status](https://app.travis-ci.com/bgoeschlberger/aoc-solutions.svg?branch=main)](https://app.travis-ci.com/bgoeschlberger/aoc-solutions) [![Known Vulnerabilities](https://snyk.io/test/github/bgoeschlberger/aoc-solutions/badge.svg)](https://snyk.io/test/github/bgoeschlberger/aoc-solutions)
 
 # aoc-solutions
 
