@@ -1,3 +1,5 @@
+![Vulnerability-Report](https://snyk.io/test/github/bgoeschlberger/aoc-solutions?targetFile=package.json)
+
 # aoc-solutions
 
 This project uses webpack to create [bookmarklets](https://en.wikipedia.org/wiki/Bookmarklet) for [Advent of Code 2021](https://adventofcode.com/).
