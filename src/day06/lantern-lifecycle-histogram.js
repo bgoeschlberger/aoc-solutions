@@ -1,9 +1,9 @@
 export class LanternLifecycleHistogram {
-    static _NEWFISH_SPAWNPOINT = 9;
+    static _NEWFISH_SPAWNPOINT = 8;
     static _OLDFISH_RESET_SPAWNPOINT = 6;
 
     constructor(lanternStateString) {
-        this._hist = new Array(LanternLifecycleHistogram._NEWFISH_SPAWNPOINT).fill(0);
+        this._hist = new Array(LanternLifecycleHistogram._NEWFISH_SPAWNPOINT+1).fill(0);
         lanternStateString.split(',').forEach((state) => this._hist[parseInt(state)]++);
     }
 
