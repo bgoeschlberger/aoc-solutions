@@ -1,4 +1,4 @@
-![Vulnerability-Report](https://snyk.io/test/github/bgoeschlberger/aoc-solutions?targetFile=package.json)
+[![Known Vulnerabilities](https://snyk.io/test/github/bgoeschlberger/aoc-solutions/badge.svg)](https://snyk.io/test/github/bgoeschlberger/aoc-solutions)
 
 # aoc-solutions
 
