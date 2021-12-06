@@ -1,5 +1,5 @@
 import { Bookmarklet } from './utils/bookmarklet';
-import './index.less'
+import './index.less';
 
 const bookmarkletArea = document.getElementById('bookmarkletArea');
 
