@@ -3,10 +3,8 @@ import { CrabHistogram } from "./crab-histogram";
 test('histogram construction', () => {
     const crabHist1 = new CrabHistogram('0,0,0');
     expect(crabHist1._hist).toEqual([3]);
-    expect(crabHist1._meanCrabPos).toBe(0);
     const crabHist2 = new CrabHistogram('0,1,2,3');
     expect(crabHist2._hist).toEqual([1,1,1,1]);
-    expect(crabHist2._meanCrabPos).toBe(1.5)
 });
 
 test('linear distance', () => {
@@ -41,16 +39,20 @@ test('search arithmetic progression distance optimum', () => {
 
 test('test for linear local optimum', () => {
     const crabHist = new CrabHistogram('0,1,2,3');
-    expect(crabHist._testForLocalOptimum(new Array(crabHist._hist.length), 0, CrabHistogram._linearDistance)).toBe(1);
-    expect(crabHist._testForLocalOptimum(new Array(crabHist._hist.length), 1, CrabHistogram._linearDistance)).toBe(0);
-    expect(crabHist._testForLocalOptimum(new Array(crabHist._hist.length), 2, CrabHistogram._linearDistance)).toBe(0);
-    expect(crabHist._testForLocalOptimum(new Array(crabHist._hist.length), 3, CrabHistogram._linearDistance)).toBe(-1);
+    expect(crabHist._testForLocalOptimum(-1, CrabHistogram._linearDistance).direction).toBe(1);
+    expect(crabHist._testForLocalOptimum(0, CrabHistogram._linearDistance).direction).toBe(1);
+    expect(crabHist._testForLocalOptimum(1, CrabHistogram._linearDistance).direction).toBe(0);
+    expect(crabHist._testForLocalOptimum(2, CrabHistogram._linearDistance).direction).toBe(0);
+    expect(crabHist._testForLocalOptimum(3, CrabHistogram._linearDistance).direction).toBe(-1);
+    expect(crabHist._testForLocalOptimum(4, CrabHistogram._linearDistance).direction).toBe(-1);
+
 });
+
 
 test('test for arithmetic progression distance  local optimum', () => {
     const crabHist = new CrabHistogram('0,1,2,3');
-    expect(crabHist._testForLocalOptimum(new Array(crabHist._hist.length), 0, CrabHistogram._arithmeticProgressionDistance)).toBe(1);
-    expect(crabHist._testForLocalOptimum(new Array(crabHist._hist.length), 1, CrabHistogram._arithmeticProgressionDistance)).toBe(0);
-    expect(crabHist._testForLocalOptimum(new Array(crabHist._hist.length), 2, CrabHistogram._arithmeticProgressionDistance)).toBe(0);
-    expect(crabHist._testForLocalOptimum(new Array(crabHist._hist.length), 3, CrabHistogram._arithmeticProgressionDistance)).toBe(-1);
+    expect(crabHist._testForLocalOptimum(0, CrabHistogram._arithmeticProgressionDistance).direction).toBe(1);
+    expect(crabHist._testForLocalOptimum(1, CrabHistogram._arithmeticProgressionDistance).direction).toBe(0);
+    expect(crabHist._testForLocalOptimum(2, CrabHistogram._arithmeticProgressionDistance).direction).toBe(0);
+    expect(crabHist._testForLocalOptimum(3, CrabHistogram._arithmeticProgressionDistance).direction).toBe(-1);
 });

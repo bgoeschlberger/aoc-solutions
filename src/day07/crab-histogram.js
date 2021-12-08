@@ -1,7 +1,6 @@
 export class CrabHistogram {
     constructor(crabLine) {
         const crabPositions = crabLine.split(',').map((crabPos) => parseInt(crabPos));
-        this._meanCrabPos = crabPositions.reduce((a, b) => a + b) / crabPositions.length;
         this._hist = new Array(Math.max(...crabPositions) + 1).fill(0);
         crabPositions.forEach((crabPos) => this._hist[crabPos]++);
     }
@@ -16,37 +15,33 @@ export class CrabHistogram {
     }
 
     _binarySearchOptimum(distanceFn) {
-        var searchIdx = Math.floor(this._meanCrabPos);
-        const searchSpace = new Array(this._hist.length);
-        var searchMove = Math.ceil(searchSpace.length / 4) * this._testForLocalOptimum(searchSpace, searchIdx, distanceFn);
+        var searchIdx = Math.floor(this._hist.length/2);
+        var testResult = this._testForLocalOptimum(searchIdx, distanceFn);
+        var searchMove = Math.ceil(this._hist.length / 4) * testResult.direction;
         while (searchMove !== 0) {
             searchIdx += searchMove;
-            var searchDirection = this._testForLocalOptimum(searchSpace, searchIdx, distanceFn);
-            searchMove = Math.ceil(Math.abs(searchMove / 2)) * searchDirection;
+            testResult = this._testForLocalOptimum(searchIdx, distanceFn);
+            searchMove = Math.ceil(Math.abs(searchMove / 2)) * testResult.direction;
         }
-        return searchSpace[searchIdx];
+        return testResult.val;
     }
 
-    _testForLocalOptimum(searchSpace, searchIdx, distanceFn) {
-        if (searchIdx < 0 || searchIdx >= searchSpace.length) {
+    _testForLocalOptimum(searchIdx, distanceFn) {
+        if (searchIdx < 0 || searchIdx >= this._hist.length) {
             //search index out of bounds, optimum is in opposite direction
-            return searchIdx < 0 ? 1 : -1;
-        }
-        // calculated values of interrest that have not been precalculated yet 
-        if (searchIdx > 0 && searchSpace[searchIdx - 1] === undefined) {
-            searchSpace[searchIdx - 1] = this._distanceTo(searchIdx - 1, distanceFn);
-        }
-        if (searchSpace[searchIdx] === undefined) {
-            searchSpace[searchIdx] = this._distanceTo(searchIdx, distanceFn);
-        }
-        if (searchIdx < searchSpace.length - 2 && searchSpace[searchIdx + 1] === undefined) {
-            searchSpace[searchIdx + 1] = this._distanceTo(searchIdx + 1, distanceFn);
+            return {
+                direction: searchIdx < 0 ? 1 : -1,
+                val: -1
+            };
         }
         // check if val is an optimum
-        const pred = searchIdx > 0 ? searchSpace[searchIdx - 1] : Number.MAX_SAFE_INTEGER;
-        const val = searchSpace[searchIdx];
-        const succ = searchIdx < searchSpace.length - 2 ? searchSpace[searchIdx + 1] : Number.MAX_SAFE_INTEGER;
-        return (val <= pred && val <= succ) ? 0 : (pred < succ ? -1 : 1);
+        const pred = searchIdx > 0 ? this._distanceTo(searchIdx - 1, distanceFn) : Number.MAX_SAFE_INTEGER;
+        const val = this._distanceTo(searchIdx, distanceFn);
+        const succ = searchIdx < this._hist.length - 2 ? this._distanceTo(searchIdx + 1, distanceFn) : Number.MAX_SAFE_INTEGER;
+        return { 
+            direction: (val <= pred && val <= succ) ? 0 : (pred < succ ? -1 : 1),
+            val: val
+        };
     }
 
     _distanceTo(pos, distanceFn) {
