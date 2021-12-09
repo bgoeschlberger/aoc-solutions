@@ -11,3 +11,4 @@ bookmarkletArea.append(new Bookmarklet('day05').element);
 bookmarkletArea.append(new Bookmarklet('day06').element);
 bookmarkletArea.append(new Bookmarklet('day07').element);
 bookmarkletArea.append(new Bookmarklet('day08').element);
+bookmarkletArea.append(new Bookmarklet('day09').element);

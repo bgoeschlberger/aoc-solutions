@@ -13,6 +13,7 @@ module.exports = {
         day06: './src/day06/index.js',
         day07: './src/day07/index.js',
         day08: './src/day08/index.js',
+        day09: './src/day09/index.js',
     },
     plugins: [
         new HtmlWebpackPlugin({
