@@ -28,5 +28,6 @@ jobs:
         npm build
 
     - name: Test
+      run: |
         npm install
         npm test
