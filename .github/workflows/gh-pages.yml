@@ -27,7 +27,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: build-and-test
-        uses: ./.github/workflows/build_and_test
+        uses: ./.github/workflows/build_and_test.yml
   deploy:
     environment:
       name: github-pages
