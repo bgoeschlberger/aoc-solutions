@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   build-and-test:
-    uses: bgoeschlberger/aoc-solutions/blob/main/.github/workflows/build_and_test.yml@main
+    uses: bgoeschlberger/aoc-solutions/.github/workflows/build_and_test.yml@main
   deploy:
     environment:
       name: github-pages
