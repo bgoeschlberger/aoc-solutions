@@ -22,12 +22,7 @@ concurrency:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: build-and-test
-        uses: bgoeschlberger/aoc-solutions/blob/main/.github/workflows/build_and_test.yml@main
+    uses: bgoeschlberger/aoc-solutions/blob/main/.github/workflows/build_and_test.yml@main
   deploy:
     environment:
       name: github-pages
